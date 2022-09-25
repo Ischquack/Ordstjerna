@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Ordstjerna</string>
+    <string-array name="wordsFound">
+        <item>FLASK</item>
+        <item>KUKS</item>
+        <item>BUKS</item>
+        <item>SUSSE</item>
+        <item>KLINKE</item>
+    </string-array>
+    <string-array name="ordFunnet">
+        <item>FLASKE</item>
+        <item>KLASKE</item>
+        <item>FAKS</item>
+        <item>LAKS</item>
+        <item>ASKE</item>
+    </string-array>
+</resources>

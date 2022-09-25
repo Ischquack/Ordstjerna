@@ -1,0 +1,47 @@
+<resources>
+    <string-array name="words">
+        <item>bleaks</item>
+        <item>fables</item>
+        <item>akelas</item>
+        <item>balks</item>
+        <item>bleak</item>
+        <item>flake</item>
+        <item>flask</item>
+        <item>bakes</item>
+        <item>beaks</item>
+        <item>fable</item>
+        <item>fakes</item>
+        <item>flabs</item>
+        <item>akela</item>
+        <item>kalas</item>
+        <item>kales</item>
+        <item>lakes</item>
+        <item>laksa</item>
+        <item>leaks</item>
+        <item>slake</item>
+        <item>ables</item>
+        <item>albas</item>
+        <item>alefs</item>
+        <item>alfas</item>
+        <item>balk</item>
+        <item>flak</item>
+        <item>bake</item>
+        <item>bask</item>
+        <item>beak</item>
+        <item>fake</item>
+        <item>flab</item>
+        <item>kabs</item>
+        <item>kafs</item>
+        <item>fabs</item>
+        <item>kala</item>
+        <item>kale</item>
+        <item>lake</item>
+        <item>leak</item>
+        <item>able</item>
+        <item>alba</item>
+        <item>albs</item>
+        <item>alef</item>
+        <item>alfa</item>
+        <item>baal</item>
+    </string-array>
+</resources>
