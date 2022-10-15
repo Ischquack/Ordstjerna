@@ -10,12 +10,11 @@
         android:id="@+id/tvNorsk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:text="Ordstjerne"
         android:textAllCaps="true"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,10 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="B"
-        app:layout_constraintBottom_toTopOf="@+id/btnMidt"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/btnMidt"
         app:layout_constraintStart_toEndOf="@+id/btnBokstav3"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <Button
         android:id="@+id/btnBokstav2"
@@ -37,7 +36,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/btnBokstav1"
         app:layout_constraintEnd_toStartOf="@+id/btnBokstav4"
         app:layout_constraintStart_toEndOf="@+id/btnMidt"
-        app:layout_constraintTop_toTopOf="@+id/btnBokstav1" />
+        app:layout_constraintTop_toTopOf="@+id/btnBokstav1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnBokstav3"
@@ -46,7 +46,7 @@
         android:text="L"
         app:layout_constraintBottom_toBottomOf="@+id/btnMidt"
         app:layout_constraintEnd_toStartOf="@+id/btnMidt"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/btnMidt" />
 
     <Button
@@ -56,8 +56,9 @@
         android:text="A"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:layout_constraintVertical_bias="0.573" />
 
     <Button
         android:id="@+id/btnBokstav4"
@@ -74,10 +75,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="F"
-        app:layout_constraintBottom_toBottomOf="@+id/btnBokstav6"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/btnMidt"
         app:layout_constraintStart_toEndOf="@+id/btnBokstav3"
-        app:layout_constraintTop_toTopOf="@+id/btnBokstav6" />
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <Button
         android:id="@+id/btnBokstav6"
@@ -86,10 +87,10 @@
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
         android:text="E"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/btnBokstav4"
         app:layout_constraintStart_toEndOf="@+id/btnMidt"
-        app:layout_constraintTop_toBottomOf="@+id/btnMidt" />
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -103,7 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.55" />
 
     <Button
         android:id="@+id/btnOmstokk"
@@ -111,10 +112,10 @@
         android:layout_height="wrap_content"
         android:text="Omstokk"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnSjekk"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnSlett"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <Button
         android:id="@+id/btnSjekk"
@@ -125,7 +126,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnOmstokk"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <Button
         android:id="@+id/btnSlett"
@@ -134,39 +135,38 @@
         android:text="Slett"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnOmstokk"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/guideline7"
+        app:layout_constraintVertical_bias="0.474" />
 
     <Button
         android:id="@+id/btnTips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gi et hint"
-        app:layout_constraintBottom_toTopOf="@+id/tvTips"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Få et hint"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <Button
         android:id="@+id/btnLosning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vis fasit"
+        android:text="Vis løsning"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOmstokk" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <EditText
         android:id="@+id/etBrukerInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Finn så mange ord som mulig"
+        android:hint="Finn så mange ord du klarer"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -175,8 +175,7 @@
         android:layout_height="wrap_content"
         android:text="Antall riktige: 0"
         app:layout_constraintBottom_toTopOf="@+id/etBrukerInput"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
@@ -184,12 +183,11 @@
         android:id="@+id/spNedtrekk"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:entries="@array/ordFunnet"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNorsk" />
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
@@ -204,8 +202,24 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/btnOmstokk"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

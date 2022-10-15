@@ -1,18 +1,14 @@
 package com.example.ordstjerna
 
-import android.util.Log
+import android.content.Intent
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.InputFilter
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
+import android.widget.*
 import kotlinx.android.synthetic.main.activity_english.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.random.Random
 
- class EnglishActivity : AppCompatActivity() {
+class EnglishActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_english)
@@ -30,19 +26,13 @@ import kotlinx.android.synthetic.main.activity_main.*
         adapter.notifyDataSetChanged()
         spinner.adapter = adapter
 
-        //etInput.setFilters(InputFilter[] {InputFilter.AllCaps()})
-
 
         btnCheck.setOnClickListener {
             val word = findViewById<EditText>(R.id.etInput).text.toString()
-            Log.d("satan", word)
+            val scoreCmp = score
             for (element in words) {
-
-                Log.d("fuck", element)
                 if (word.equals(element, ignoreCase = true)) {
-                    // add to dropdown
                     words[index] = ""
-                    Log.d("knulle", element)
                     score++
                     list.add(word)
                     adapter.notifyDataSetChanged()
@@ -54,6 +44,10 @@ import kotlinx.android.synthetic.main.activity_main.*
             }
             index = 0
             etInput.setText("")
+            if (score == scoreCmp) {
+                Toast.makeText(this, "TRY AGAIN DUMBASS",
+                    Toast.LENGTH_LONG).show()
+            }
         }
 
         btnLetter1.setOnClickListener {
@@ -109,9 +103,26 @@ import kotlinx.android.synthetic.main.activity_main.*
             btnLetter6.setText(buttonLetters[5].toString())
         }
 
+        btnSolution.setOnClickListener {
+            Intent(this, SolutionActivity::class.java).also {
+                it.putExtra("EXTRA_SCORE", score)
+                startActivity(it)
+                finish()
+            }
+        }
 
-
+        btnHint.setOnClickListener {
+            val randomIndex = Random.nextInt(words.size)
+            val randomWord = words[randomIndex]
+            var returnWord = ""
+            if (randomWord.length > 5) {
+                var strippedWord = randomWord.drop(2).dropLast(2)
+                returnWord = "**$strippedWord**"
+            } else {
+                var strippedWord = randomWord.dropLast(1).drop(1)
+                returnWord = "*$strippedWord*"
+            }
+            tvHint.setText("$returnWord")
+        }
     }
-
-
  }
