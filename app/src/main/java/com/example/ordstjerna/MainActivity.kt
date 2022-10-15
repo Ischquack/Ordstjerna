@@ -4,11 +4,18 @@ import android.content.Intent
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.annotations.NonNls
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
+    var score = 0
+    var scoreText = ""
+    var index = 0
+    lateinit var list:ArrayList<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,10 +25,10 @@ class MainActivity : AppCompatActivity() {
 
         btnConstraint.setText("A")
         val words: Array<String> = res.getStringArray(R.array.words)
-        var score = 0
+        //var score = 0
         tvScore.setText(res.getString(R.string.score) + " $score")
-        var index = 0
-        val list = arrayListOf(res.getString(R.string.correctWords))
+        //var index = 0
+        list = arrayListOf(res.getString(R.string.correctWords))
         val adapter: ArrayAdapter<*> = ArrayAdapter(this,
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, list)
         adapter.notifyDataSetChanged()
@@ -48,7 +55,8 @@ class MainActivity : AppCompatActivity() {
                         list.add(word)
                         adapter.notifyDataSetChanged()
                         spinner.adapter = adapter
-                        tvScore.setText(res.getString(R.string.score) + " $score")
+                        scoreText = res.getString(R.string.score)
+                        tvScore.setText(scoreText + " $score")
                         Toast.makeText(this, R.string.goodFeedback,
                             Toast.LENGTH_LONG).show()
                         break
@@ -138,5 +146,25 @@ class MainActivity : AppCompatActivity() {
             }
             tvHint.setText("$returnWord")
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("score", score)
+        outState.putString("scoreText",scoreText)
+        outState.putStringArrayList("list", list)
+        Log.d("ku",list.toString())
+        outState.putInt("index", index)
+    }
+
+    override fun onRestoreInstanceState(outState: Bundle){
+        super.onRestoreInstanceState(outState)
+        scoreText = outState.getString("scoreText").toString()
+        list = outState.getStringArrayList("list") as ArrayList<String>
+        Log.d("ku",list.toString())
+        index = outState.getInt("index")
+        score = outState.getInt("score")
+        tvScore.setText(scoreText +
+                " " + score)
     }
  }
