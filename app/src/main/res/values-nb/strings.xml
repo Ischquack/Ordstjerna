@@ -5,7 +5,7 @@
     <string name="del">Slett</string>
     <string name="shuffle">Omstokk</string>
     <string name="check">Sjekk</string>
-    <string name="solution">Vis løsning</string>
+    <string name="showSolution">Vis løsning</string>
     <string name="input">Finn så mange ord som mulig</string>
     <string name="score">Poengsum: </string>
     <string name="allWords"></string>
@@ -13,4 +13,7 @@
     <string name="goodFeedback">Bra jobbet!</string>
     <string name="wordTooShort">Ordet må bestå av minst 4 bokstaver</string>
     <string name="missingMiddleLetter">Ordet må inneholde bokstaven "A"</string>
+    <string name="solution">Løsning</string>
+    <string name="finalScore1">Du endte opp med</string>
+    <string name="finalScore2">poeng</string>
 </resources>
