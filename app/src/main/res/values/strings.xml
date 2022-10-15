@@ -1,17 +1,11 @@
 <resources>
-    <string name="app_name">Ordstjerna</string>
-    <string-array name="wordsFound">
-        <item>FLASK</item>
-        <item>KUKS</item>
-        <item>BUKS</item>
-        <item>SUSSE</item>
-        <item>KLINKE</item>
-    </string-array>
-    <string-array name="ordFunnet">
-        <item>FLASKE</item>
-        <item>KLASKE</item>
-        <item>FAKS</item>
-        <item>LAKS</item>
-        <item>ASKE</item>
-    </string-array>
+    <string name="appName">Wordstar</string>
+    <string name="correctWords">Correct words so far</string>
+    <string name="hint">Give me a hint</string>
+    <string name="del">Delete</string>
+    <string name="shuffle">Shuffle</string>
+    <string name="check">Check</string>
+    <string name="solution">Show solution</string>
+    <string name="input">Find as many words as possible</string>
+    <string name="score">Current score: </string>
 </resources>

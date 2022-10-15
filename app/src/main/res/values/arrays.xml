@@ -44,22 +44,4 @@
         <item>alfa</item>
         <item>baal</item>
     </string-array>
-
-    <string-array name="ord">
-        <item>alle</item>
-        <item>balle</item>
-        <item>kalle</item>
-        <item>kake</item>
-        <item>flak</item>
-        <item>alfa</item>
-        <item>falle</item>
-        <item>lakke</item>
-        <item>lakk</item>
-        <item>kall</item>
-        <item>flaske</item>
-        <item>skall</item>
-        <item>sakke</item>
-        <item>kasse</item>
-        <item>labb</item>
-    </string-array>
 </resources>
