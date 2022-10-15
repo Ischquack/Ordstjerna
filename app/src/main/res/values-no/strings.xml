@@ -1,5 +1,5 @@
 <resources>
-    <string name="appName">Ordstjerna</string>
+    <string name="app_name">Ordstjerna</string>
     <string name="correctWords">Ord funnet så langt</string>
     <string name="hint">Gi meg et hint</string>
     <string name="del">Slett</string>

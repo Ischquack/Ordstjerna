@@ -14,14 +14,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val spinner: Spinner = findViewById(R.id.spDropdown)
         val res: Resources = resources
-        var buttonLetters = arrayOf<Char>('B', 'K', 'L', 'S', 'F', 'E')
+        val buttonLetters = arrayOf<Char>('B', 'K', 'L', 'S', 'F', 'E')
 
         btnConstraint.setText("A")
-        var words: Array<String> = res.getStringArray(R.array.words)
+        val words: Array<String> = res.getStringArray(R.array.words)
         var score = 0
         tvScore.setText(res.getString(R.string.score) + " $score")
         var index = 0
-        var list = arrayListOf(res.getString(R.string.correctWords))
+        val list = arrayListOf(res.getString(R.string.correctWords))
         val adapter: ArrayAdapter<*> = ArrayAdapter(this,
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, list)
         adapter.notifyDataSetChanged()
@@ -66,39 +66,39 @@ class MainActivity : AppCompatActivity() {
         btnLetter1.setOnClickListener {
             val letter1 = findViewById<Button>(R.id.btnLetter1).text.toString()
             val currentWord = findViewById<EditText>(R.id.etInput).text.toString()
-            etInput.setText("$currentWord"+"$letter1")
+            etInput.setText("$currentWord$letter1")
         }
 
         btnLetter2.setOnClickListener {
             val letter2 = findViewById<Button>(R.id.btnLetter2).text.toString()
             val currentWord = findViewById<EditText>(R.id.etInput).text.toString()
-            etInput.setText("$currentWord"+"$letter2")
+            etInput.setText("$currentWord$letter2")
         }
         btnLetter3.setOnClickListener {
             val letter3 = findViewById<Button>(R.id.btnLetter3).text.toString()
             val currentWord = findViewById<EditText>(R.id.etInput).text.toString()
-            etInput.setText("$currentWord"+"$letter3")
+            etInput.setText("$currentWord$letter3")
         }
         btnLetter4.setOnClickListener {
             val letter4 = findViewById<Button>(R.id.btnLetter4).text.toString()
             val currentWord = findViewById<EditText>(R.id.etInput).text.toString()
-            etInput.setText("$currentWord"+"$letter4")
+            etInput.setText("$currentWord$letter4")
         }
         btnLetter5.setOnClickListener {
             val letter5 = findViewById<Button>(R.id.btnLetter5).text.toString()
             val currentWord = findViewById<EditText>(R.id.etInput).text.toString()
-            etInput.setText("$currentWord"+"$letter5")
+            etInput.setText("$currentWord$letter5")
         }
         btnLetter6.setOnClickListener {
             val letter6 = findViewById<Button>(R.id.btnLetter6).text.toString()
             val currentWord = findViewById<EditText>(R.id.etInput).text.toString()
-            etInput.setText("$currentWord"+"$letter6")
+            etInput.setText("$currentWord$letter6")
         }
 
         btnConstraint.setOnClickListener {
             val letter7 = findViewById<Button>(R.id.btnConstraint).text.toString()
             val currentWord = findViewById<EditText>(R.id.etInput).text.toString()
-            etInput.setText("$currentWord"+"$letter7")
+            etInput.setText("$currentWord$letter7")
         }
 
         btnDel.setOnClickListener {
@@ -127,12 +127,12 @@ class MainActivity : AppCompatActivity() {
         btnHint.setOnClickListener {
             val randomIndex = Random.nextInt(words.size)
             val randomWord = words[randomIndex]
-            var returnWord = ""
+            var returnWord: String
             if (randomWord.length > 5) {
-                var strippedWord = randomWord.drop(2).dropLast(2)
+                val strippedWord = randomWord.drop(2).dropLast(2)
                 returnWord = "**$strippedWord**"
             } else {
-                var strippedWord = randomWord.dropLast(1).drop(1)
+                val strippedWord = randomWord.dropLast(1).drop(1)
                 returnWord = "*$strippedWord*"
             }
             tvHint.setText("$returnWord")
