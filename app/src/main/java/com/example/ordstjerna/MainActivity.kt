@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         btnConstraint.setText("A")
         var words: Array<String> = res.getStringArray(R.array.words)
         var score = 0
+        tvScore.setText(res.getString(R.string.score) + " $score")
         var index = 0
         var list = arrayListOf(res.getString(R.string.correctWords))
         val adapter: ArrayAdapter<*> = ArrayAdapter(this,
@@ -30,23 +31,35 @@ class MainActivity : AppCompatActivity() {
         btnCheck.setOnClickListener {
             val word = findViewById<EditText>(R.id.etInput).text.toString()
             val scoreCmp = score
-            for (element in words) {
-                if (word.equals(element, ignoreCase = true)) {
-                    words[index] = ""
-                    score++
-                    list.add(word)
-                    adapter.notifyDataSetChanged()
-                    spinner.adapter = adapter
-                    tvScore.setText("Current score: $score")
-                    break
-                }
-                index++
-            }
-            index = 0
-            etInput.setText("")
-            if (score == scoreCmp) {
-                Toast.makeText(this, "TRY AGAIN DUMBASS",
+            if(word.length < 4){
+                Toast.makeText(this, R.string.wordTooShort,
                     Toast.LENGTH_LONG).show()
+            }
+            else if(! word.contains("A", ignoreCase = true)){
+                Toast.makeText(this, R.string.missingMiddleLetter,
+                    Toast.LENGTH_LONG).show()
+            }
+            else{
+                for (element in words) {
+                    if (word.equals(element, ignoreCase = true)) {
+                        words[index] = ""
+                        score++
+                        list.add(word)
+                        adapter.notifyDataSetChanged()
+                        spinner.adapter = adapter
+                        tvScore.setText(res.getString(R.string.score) + " $score")
+                        Toast.makeText(this, R.string.goodFeedback,
+                            Toast.LENGTH_LONG).show()
+                        break
+                    }
+                    index++
+                }
+                index = 0
+                etInput.setText("")
+                if (score == scoreCmp) {
+                    Toast.makeText(this, R.string.badFeedback,
+                        Toast.LENGTH_LONG).show()
+                }
             }
         }
 

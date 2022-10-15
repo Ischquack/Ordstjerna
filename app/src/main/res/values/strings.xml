@@ -7,6 +7,10 @@
     <string name="check">Check</string>
     <string name="solution">Show solution</string>
     <string name="input">Find as many words as possible</string>
-    <string name="score">Current score: 0</string>
+    <string name="score">Current score: </string>
     <string name="allWords"></string>
+    <string name="badFeedback">"Try again, dumbass!"</string>
+    <string name="goodFeedback">Good job!</string>
+    <string name="wordTooShort">The word most contain at least 4 letters</string>
+    <string name="missingMiddleLetter">The word has to  contain the letter "A"</string>
 </resources>
