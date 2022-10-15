@@ -34,10 +34,12 @@ class MainActivity : AppCompatActivity() {
             if(word.length < 4){
                 Toast.makeText(this, R.string.wordTooShort,
                     Toast.LENGTH_LONG).show()
+                etInput.setText("")
             }
             else if(! word.contains("A", ignoreCase = true)){
                 Toast.makeText(this, R.string.missingMiddleLetter,
                     Toast.LENGTH_LONG).show()
+                etInput.setText("")
             }
             else{
                 for (element in words) {
