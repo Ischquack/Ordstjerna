@@ -1,0 +1,11 @@
+<resources>
+    <string name="appName">Ordstjerna</string>
+    <string name="correctWords">Ord funnet så langt</string>
+    <string name="hint">Gi meg et hint</string>
+    <string name="del">Slett</string>
+    <string name="shuffle">Omstokk</string>
+    <string name="check">Sjekk</string>
+    <string name="solution">Vis løsning</string>
+    <string name="input">Finn så mange ord som mulig</string>
+    <string name="score">Poengsum: </string>
+</resources>
