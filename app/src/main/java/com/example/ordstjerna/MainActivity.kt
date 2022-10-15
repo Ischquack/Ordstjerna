@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
         spinner.adapter = adapter
 
-
         btnCheck.setOnClickListener {
             val word = findViewById<EditText>(R.id.etInput).text.toString()
             val scoreCmp = score
