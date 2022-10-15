@@ -7,5 +7,5 @@
     <string name="check">Sjekk</string>
     <string name="solution">Vis løsning</string>
     <string name="input">Finn så mange ord som mulig</string>
-    <string name="score">Poengsum: </string>
+    <string name="score">Poengsum: 0</string>
 </resources>

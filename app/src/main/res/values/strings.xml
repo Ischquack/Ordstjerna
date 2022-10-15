@@ -7,5 +7,6 @@
     <string name="check">Check</string>
     <string name="solution">Show solution</string>
     <string name="input">Find as many words as possible</string>
-    <string name="score">Current score: </string>
+    <string name="score">Current score: 0</string>
+    <string name="allWords"></string>
 </resources>
