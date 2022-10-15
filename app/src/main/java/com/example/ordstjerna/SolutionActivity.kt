@@ -20,7 +20,8 @@ class SolutionActivity : AppCompatActivity() {
             val solutionList = findViewById<TextView>(R.id.AllWords).text.toString()
             AllWords.setText(solutionList + "$word \n")
         }
-        FinalScore.setText("You got a final score of $score points")
+        FinalScore.setText(res.getString(R.string.finalScore1)
+                +" $score "+res.getString(R.string.finalScore2))
     }
 
 }
