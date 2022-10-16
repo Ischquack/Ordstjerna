@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val res: Resources = resources
+
         if (savedInstanceState != null) {
             words = savedInstanceState.getStringArray("words") as Array<String>
             scoreText = savedInstanceState.getString("scoreText").toString()
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         val spinner: Spinner = findViewById(R.id.spDropdown)
         val buttonLetters = arrayOf<Char>('B', 'K', 'L', 'S', 'F', 'E')
         btnConstraint.setText("A")
-        tvScore.setText(res.getString(R.string.score) + " $score")
+        tvScore.setText(res.getString(R.string.score) + " $score / " + words.size)
         val adapter: ArrayAdapter<*> = ArrayAdapter(this,
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, list)
         adapter.notifyDataSetChanged()
@@ -58,18 +59,16 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG).show()
                 etInput.setText("")
             }
-
             else{
                 for (element in words) {
                     if (word.equals(element, ignoreCase = true)) {
-                        //indexList += index
                         words[index] = ""
                         score++
                         list.add(word)
                         adapter.notifyDataSetChanged()
                         spinner.adapter = adapter
                         scoreText = res.getString(R.string.score)
-                        tvScore.setText(scoreText + " $score")
+                        tvScore.setText(scoreText + " $score / " + words.size)
                         Toast.makeText(this, R.string.goodFeedback,
                             Toast.LENGTH_LONG).show()
                         break
@@ -147,21 +146,25 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnHint.setOnClickListener {
-            var randomIndex = Random.nextInt(words.size)
-            var randomWord = words[randomIndex]
-            while (randomWord == ""){
-                randomIndex = Random.nextInt(words.size)
-                randomWord = words[randomIndex]
+            if (score != words.size){
+                var randomIndex = Random.nextInt(words.size)
+                var randomWord = words[randomIndex]
+                while (randomWord == ""){
+                    randomIndex = Random.nextInt(words.size)
+                    randomWord = words[randomIndex]
+                }
+
+                var returnWord: String
+                if (randomWord.length > 5) {
+                    val strippedWord = randomWord.drop(2).dropLast(2)
+                    returnWord = "**$strippedWord**"
+                } else {
+                    val strippedWord = randomWord.dropLast(1).drop(1)
+                    returnWord = "*$strippedWord*"
+                }
+
+                tvHint.setText("$returnWord")
             }
-            var returnWord: String
-            if (randomWord.length > 5) {
-                val strippedWord = randomWord.drop(2).dropLast(2)
-                returnWord = "**$strippedWord**"
-            } else {
-                val strippedWord = randomWord.dropLast(1).drop(1)
-                returnWord = "*$strippedWord*"
-            }
-            tvHint.setText("$returnWord")
         }
     }
 

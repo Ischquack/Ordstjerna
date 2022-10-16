@@ -16,5 +16,5 @@
     <string name="solution">Løsning</string>
     <string name="finalScore1">Du endte opp med</string>
     <string name="finalScore2">poeng</string>
-    <string name="duplicate">Ikke prøv deg din luring</string>
+    <string name="duplicate">Ikke prøv deg, din luring</string>
 </resources>
