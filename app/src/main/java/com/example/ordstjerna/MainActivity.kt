@@ -167,4 +167,4 @@ class MainActivity : AppCompatActivity() {
         tvScore.setText(scoreText +
                 " " + score)
     }
- }
+}
