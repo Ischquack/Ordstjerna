@@ -15,11 +15,14 @@ class SolutionActivity : AppCompatActivity() {
 
         val res: Resources = resources
         val words: Array<String> = res.getStringArray(R.array.words)
+        // Retrieves score value from MainActivity:
         val score = intent.getIntExtra("EXTRA_SCORE", 0)
-        for (word in words) {
+
+        for (word in words) {       // Print all words to allWords TextVeiw:
             val solutionList = findViewById<TextView>(R.id.AllWords).text.toString()
             AllWords.setText(solutionList + "$word \n")
         }
+
         FinalScore.setText(res.getString(R.string.finalScore1)
                 +" $score "+res.getString(R.string.finalScore2))
     }

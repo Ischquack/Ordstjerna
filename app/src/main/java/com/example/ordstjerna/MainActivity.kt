@@ -9,16 +9,20 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
-    var score = 0
+    // Values that will be manipulated by events
+    var score = 0                               // Number of correct answers
+    var index = 0                               // Variable for accessing wordlist
     var scoreText = ""
-    var index = 0
-    lateinit var list:ArrayList<String>
-    lateinit var words:Array<String>
+    lateinit var list:ArrayList<String>         // List containing correct words
+    lateinit var words:Array<String>            // List containing all words in solution
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val res: Resources = resources
 
+        val res: Resources = resources          // Value that can access res folder
+
+        // Handling screen rotation requires getting values from outstate
         if (savedInstanceState != null) {
             words = savedInstanceState.getStringArray("words") as Array<String>
             scoreText = savedInstanceState.getString("scoreText").toString()
@@ -27,15 +31,17 @@ class MainActivity : AppCompatActivity() {
             score = savedInstanceState.getInt("score")
             tvScore.setText(scoreText +
                     " " + score)
-        } else {
-            list = arrayListOf(res.getString(R.string.correctWords))
+        } else {        // First time the program runs, we retrieve the wordlist from res location
+            list = arrayListOf(res.getString(R.string.correctWords))    // "Correct words so far"
             words = res.getStringArray(R.array.words)
         }
 
-        val spinner: Spinner = findViewById(R.id.spDropdown)
-        val buttonLetters = arrayOf<Char>('B', 'K', 'L', 'S', 'F', 'E')
-        btnConstraint.setText("A")
+        val buttonLetters = arrayOf<Char>('B', 'K', 'L', 'S', 'F', 'E')     // Button letters
+        btnConstraint.setText("A")      // Middle button is not affected by shuffle button
         tvScore.setText(res.getString(R.string.score) + " $score / " + words.size)
+
+        // A spinner variable is required to handle the dropdown menu containing correct words
+        val spinner: Spinner = findViewById(R.id.spDropdown)
         val adapter: ArrayAdapter<*> = ArrayAdapter(this,
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, list)
         adapter.notifyDataSetChanged()
@@ -44,6 +50,8 @@ class MainActivity : AppCompatActivity() {
         btnCheck.setOnClickListener {
             val word = findViewById<EditText>(R.id.etInput).text.toString()
             val scoreCmp = score
+            /* Have to check whether the input word is long enough, contains letter from the middle
+            button or is already found: */
             if(word.length < 4){
                 Toast.makeText(this, R.string.wordTooShort,
                     Toast.LENGTH_LONG).show()
@@ -59,12 +67,13 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG).show()
                 etInput.setText("")
             }
+            // Checks if word is correct
             else{
                 for (element in words) {
-                    if (word.equals(element, ignoreCase = true)) {
-                        words[index] = ""
+                    if (word.equals(element, ignoreCase = true)) {      // If word is correct
+                        words[index] = ""               // Remove word from all word list
                         score++
-                        list.add(word)
+                        list.add(word)                  // Add word to correct words list
                         adapter.notifyDataSetChanged()
                         spinner.adapter = adapter
                         scoreText = res.getString(R.string.score)
@@ -77,13 +86,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 index = 0
                 etInput.setText("")
-                if (score == scoreCmp) {
+                if (score == scoreCmp) {        // If wrong word
                     Toast.makeText(this, R.string.badFeedback,
                         Toast.LENGTH_LONG).show()
                 }
             }
         }
 
+        // Code for inputting button letters to the input field:
         btnLetter1.setOnClickListener {
             val letter1 = findViewById<Button>(R.id.btnLetter1).text.toString()
             val currentWord = findViewById<EditText>(R.id.etInput).text.toString()
@@ -127,6 +137,7 @@ class MainActivity : AppCompatActivity() {
             etInput.setText(curWord.dropLast(1))
         }
 
+        // Shuffle button implementation
         btnShuffle.setOnClickListener {
             buttonLetters.shuffle()
             btnLetter1.setText(buttonLetters[0].toString())
@@ -137,18 +148,21 @@ class MainActivity : AppCompatActivity() {
             btnLetter6.setText(buttonLetters[5].toString())
         }
 
+        // Show solution buttons opens the SolutionActivity
         btnSolution.setOnClickListener {
             Intent(this, SolutionActivity::class.java).also {
-                it.putExtra("EXTRA_SCORE", score)
+                it.putExtra("EXTRA_SCORE", score)       // Stores user score data
                 startActivity(it)
                 finish()
             }
         }
 
+        // Hint button implementation
         btnHint.setOnClickListener {
-            if (score != words.size){
+            if (score != words.size){    // If there are no more words to be found, nothing happens
                 var randomIndex = Random.nextInt(words.size)
                 var randomWord = words[randomIndex]
+                // If the user already found the random word, we get another word from word list:
                 while (randomWord == ""){
                     randomIndex = Random.nextInt(words.size)
                     randomWord = words[randomIndex]
@@ -168,6 +182,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Saves key variables to outstate to be accessed when onCreate() gets called again:
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt("score", score)
