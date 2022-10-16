@@ -9,11 +9,12 @@
     <string name="input">Finn så mange ord som mulig</string>
     <string name="score">Poengsum: </string>
     <string name="allWords"></string>
-    <string name="badFeedback">Lær deg norsk!!</string>
+    <string name="badFeedback">Fant du på et ord nå?</string>
     <string name="goodFeedback">Bra jobbet!</string>
     <string name="wordTooShort">Ordet må bestå av minst 4 bokstaver</string>
     <string name="missingMiddleLetter">Ordet må inneholde bokstaven "A"</string>
     <string name="solution">Løsning</string>
     <string name="finalScore1">Du endte opp med</string>
     <string name="finalScore2">poeng</string>
+    <string name="duplicate">Ikke prøv deg din luring</string>
 </resources>

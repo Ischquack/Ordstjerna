@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.annotations.NonNls
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -15,20 +14,31 @@ class MainActivity : AppCompatActivity() {
     var scoreText = ""
     var index = 0
     lateinit var list:ArrayList<String>
-
+    lateinit var words:Array<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val spinner: Spinner = findViewById(R.id.spDropdown)
         val res: Resources = resources
-        val buttonLetters = arrayOf<Char>('B', 'K', 'L', 'S', 'F', 'E')
+        if (savedInstanceState != null) {
+            words = savedInstanceState.getStringArray("words") as Array<String>
+            scoreText = savedInstanceState.getString("scoreText").toString()
+            list = savedInstanceState.getStringArrayList("list") as ArrayList<String>
+            Log.d("ku",list.toString())
+            index = savedInstanceState.getInt("index")
+            score = savedInstanceState.getInt("score")
+            tvScore.setText(scoreText +
+                    " " + score)
+        } else {
+            list = arrayListOf(res.getString(R.string.correctWords))
+            words = res.getStringArray(R.array.words)
+        }
 
+        Log.d("kuuk", words.toString())
+        val spinner: Spinner = findViewById(R.id.spDropdown)
+        val buttonLetters = arrayOf<Char>('B', 'K', 'L', 'S', 'F', 'E')
+        Log.d("kuk", words.toString())
         btnConstraint.setText("A")
-        val words: Array<String> = res.getStringArray(R.array.words)
-        //var score = 0
         tvScore.setText(res.getString(R.string.score) + " $score")
-        //var index = 0
-        list = arrayListOf(res.getString(R.string.correctWords))
         val adapter: ArrayAdapter<*> = ArrayAdapter(this,
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, list)
         adapter.notifyDataSetChanged()
@@ -47,9 +57,16 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG).show()
                 etInput.setText("")
             }
+            else if(list.contains(word)) {
+                Toast.makeText(this, R.string.duplicate,
+                    Toast.LENGTH_LONG).show()
+                etInput.setText("")
+            }
+
             else{
                 for (element in words) {
                     if (word.equals(element, ignoreCase = true)) {
+                        //indexList += index
                         words[index] = ""
                         score++
                         list.add(word)
@@ -155,16 +172,6 @@ class MainActivity : AppCompatActivity() {
         outState.putStringArrayList("list", list)
         Log.d("ku",list.toString())
         outState.putInt("index", index)
-    }
-
-    override fun onRestoreInstanceState(outState: Bundle){
-        super.onRestoreInstanceState(outState)
-        scoreText = outState.getString("scoreText").toString()
-        list = outState.getStringArrayList("list") as ArrayList<String>
-        Log.d("ku",list.toString())
-        index = outState.getInt("index")
-        score = outState.getInt("score")
-        tvScore.setText(scoreText +
-                " " + score)
+        outState.putStringArray("words", words)
     }
 }

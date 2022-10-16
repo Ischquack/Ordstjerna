@@ -9,11 +9,12 @@
     <string name="input">Find as many words as possible</string>
     <string name="score">Current score: </string>
     <string name="allWords"></string>
-    <string name="badFeedback">"Try again, dumbass!"</string>
+    <string name="badFeedback">Are you sure that\'s a real word?</string>
     <string name="goodFeedback">Good job!</string>
     <string name="wordTooShort">The word most contain at least 4 letters</string>
     <string name="missingMiddleLetter">The word has to  contain the letter "A"</string>
     <string name="solution">Solution</string>
     <string name="finalScore1">You got a final score of</string>
     <string name="finalScore2">points</string>
+    <string name="duplicate">You already got points for that word you sneak</string>
 </resources>
