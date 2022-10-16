@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
@@ -23,7 +22,6 @@ class MainActivity : AppCompatActivity() {
             words = savedInstanceState.getStringArray("words") as Array<String>
             scoreText = savedInstanceState.getString("scoreText").toString()
             list = savedInstanceState.getStringArrayList("list") as ArrayList<String>
-            Log.d("ku",list.toString())
             index = savedInstanceState.getInt("index")
             score = savedInstanceState.getInt("score")
             tvScore.setText(scoreText +
@@ -33,10 +31,8 @@ class MainActivity : AppCompatActivity() {
             words = res.getStringArray(R.array.words)
         }
 
-        Log.d("kuuk", words.toString())
         val spinner: Spinner = findViewById(R.id.spDropdown)
         val buttonLetters = arrayOf<Char>('B', 'K', 'L', 'S', 'F', 'E')
-        Log.d("kuk", words.toString())
         btnConstraint.setText("A")
         tvScore.setText(res.getString(R.string.score) + " $score")
         val adapter: ArrayAdapter<*> = ArrayAdapter(this,
@@ -151,8 +147,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnHint.setOnClickListener {
-            val randomIndex = Random.nextInt(words.size)
-            val randomWord = words[randomIndex]
+            var randomIndex = Random.nextInt(words.size)
+            var randomWord = words[randomIndex]
+            while (randomWord == ""){
+                randomIndex = Random.nextInt(words.size)
+                randomWord = words[randomIndex]
+            }
             var returnWord: String
             if (randomWord.length > 5) {
                 val strippedWord = randomWord.drop(2).dropLast(2)
@@ -170,7 +170,6 @@ class MainActivity : AppCompatActivity() {
         outState.putInt("score", score)
         outState.putString("scoreText",scoreText)
         outState.putStringArrayList("list", list)
-        Log.d("ku",list.toString())
         outState.putInt("index", index)
         outState.putStringArray("words", words)
     }
