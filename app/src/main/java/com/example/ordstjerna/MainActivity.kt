@@ -57,6 +57,12 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG).show()
                 etInput.setText("")
             }
+            else if(list.contains(word)) {
+                Toast.makeText(this, R.string.duplicate,
+                    Toast.LENGTH_LONG).show()
+                etInput.setText("")
+            }
+
             else{
                 for (element in words) {
                     if (word.equals(element, ignoreCase = true)) {
